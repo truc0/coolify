@@ -14,7 +14,7 @@ export async function configureGitLabApp(request: FastifyRequest<ConfigureGitLab
         const { fqdn } = await listSettings();
         const { gitSource: { gitlabApp: { appId, appSecret }, htmlUrl } }: any = await getApplicationFromDB(state, undefined);
 
-        let domain = `http://${request.hostname}`;
+        let domain = `https://${request.hostname}`;
         if (fqdn) domain = fqdn;
         if (isDev) {
             domain = getAPIUrl();

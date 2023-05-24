@@ -28,7 +28,7 @@ export default async function ({
 	forPublic: boolean;
 	customUser: string;
 }): Promise<string> {
-	const url = htmlUrl.replace('https://', '').replace('http://', '').replace(/\/$/, '');
+	const url = htmlUrl.replace('https://', '').replace('http://', '').replace(/\/$/, '').replace(/:\d+$/, '');
 	if (!forPublic) {
 		await executeCommand({ command: `echo '${privateSshKey}' > ${repodir}/id.rsa`, shell: true });
 		await executeCommand({ command: `chmod 600 ${repodir}/id.rsa` });
